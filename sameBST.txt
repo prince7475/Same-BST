@@ -1,0 +1,204 @@
+An array of integers is said to represent the Binary Search Tree (BST) obtained 
+by inserting each integer in the array (from left to right) into the BST. 
+Write a function that takes in two arrays of integers and returns a boolean 
+representing whether or not these arrays represent the same BST. Note that you are
+not allowed to construct any BSTs in your code. A BST is a Binary Tree that 
+consists only of BST nodes. A node is said to be a BST node if and only if it 
+satisfies the BST property: its value is strictly greater than the values of every 
+node to its left; its value is less than or equal to the values of every node to its
+right; and both of its children nodes are either BST nodes themselves or None (null) values.
+
+Sample input: [10,15,8,12,94,81,5,2,11], [10,8,5,15,2,12,11,94,81]
+Sample output: true
+
+                          10
+                        /   \
+                       8      15
+                      /      /   \
+                     5      12    94
+                    /      /      /
+                   2     11      81
+                   
+  Main(arr1, arr2){
+   if(arr1.length !== arr2.length || arr1[0] !== arr2[0]) return false
+    return helper(arr1, arr2)
+  }
+   
+   helper(arr1, arr2){
+    if(arr1.length === 0 || arr2.length === 0){
+      return (arr1.length === arr2.length)
+    }
+    
+    if(arr1.length !== arr2.length || arr1[0] !== arr2[0]) return false
+    
+    let arr1Left = getLeftValue(arr1)
+    let arr2Left = getLeftValue(arr2)
+    let leftResult = helper(arr1Left,arreLeft)
+    
+    let arr1Right = getRightValue(arr1)
+    let arr2Right = getRightValue(arr2)
+    let rightResult = helper(arr1Right,arr2Right)
+    
+    return leftResult && rightResult
+   }
+   
+   
+   function getLeftValue(bstArr) {
+    let result = []
+    for(let i = 1; i < bstArr.length; i++){
+      let currNum = bstArr[i]
+      if(bstArr[0] > currNum){
+        result.push(currNum)
+      }
+    }
+    return result
+   }
+   
+   function getRightValue(bstArr){
+    let result = []
+    for(let i = 1; i < bstArr.length; i++){
+      let currNum = bstArr[i]
+      if(bstArr[0] <= currNum){
+        result.push(currNum)
+      }
+    }
+    return result
+   }
+   
+   Time -> O(N)
+   Space -> O(N)
+   function sameBsts(arrayOne,arrayTwo){
+      return sameBstHelper(arrayOne,arrayTwo)
+   }
+   
+   function sameBstHelper(arr1, arr2){
+    if(arr1.length === 0 || arr2.length === 0){
+      return arr1.length === arr2.length 
+    }
+    
+    if(arr1.length !== arr2.length || arr1[0] !== arr2[0]) return false
+    
+    let arr1Left = getLeftValues(arr1)
+    let arr2Left = getLeftValues(arr2)
+    
+    let leftResult = sameBstHelper(arr1Left,arr2Left)
+    
+    let arr1Right = getRightValues(arr1)
+    let arr2Right = getRightValues(arr2)
+    
+    return leftResult && sameBstHelper(arr1Right, arr2Right)
+    
+   }
+   
+      function getLeftValues(bstArr) {
+    let result = []
+    for(let i = 1; i < bstArr.length; i++){
+      let currNum = bstArr[i]
+      if(bstArr[0] > currNum){
+        result.push(currNum)
+      }
+    }
+    return result
+   }
+   
+   function getRightValues(bstArr){
+    let result = []
+    for(let i = 1; i < bstArr.length; i++){
+      let currNum = bstArr[i]
+      if(bstArr[0] <= currNum){
+        result.push(currNum)
+      }
+    }
+    return result
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   function sameBsts(arrayOne, arrayTwo){
+    return sameBstHelper(arrayOne,arrayTwo)
+   }
+   
+   function sameBstHelper(arr1,arr2){
+    if(arr1.length === 0 || arr2.length === 0){
+      return arr1.length === arr2.length
+    }
+    
+    if(arr1.length !== arr2.length || arr1[0] !== arr2[0]) return false
+    
+    let arr1Left = getLeftValues(arr1)
+    let arr2Left = getLeftValues(arr2)
+    
+    let leftResult = sameBstHelper(arr1Left,arr2Left)
+    
+    let arr1Right = getRightValues(arr1)
+    let arr2Right = getRightValues(arr2)
+    
+    return leftResult && sameBstHelper(arr1Right, arr2Right)
+    
+   }
+   
+   function getLeftValues(arr){
+    let result = []
+    
+    for(let i = 1; i < arr.length; i ++){
+      if(arr[0] > arr[i]){
+      result.push(arr[i])
+      }
+    }
+    return result
+   }
+   
+   function getRightValues(arr){
+    let result = []
+    
+    for(let i = 1; i < arr.length; i++){
+      if(arr[0] <= arr[i]){
+        result.push(arr[i])
+      }
+    }
+    return result
+   }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
